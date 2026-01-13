@@ -5,15 +5,19 @@
 - Charley Liao
 - Ramnik Mudaliar
 
-## Part 1: SSH Key Generation
+## SSH Key Generation
 
-To Create the SSH key pair for this lab, use the following command:
+To create the SSH key pair for this lab, we ran the following command:
 
 ```bash
 ssh-keygen -t ed25519 -f ~/.ssh/wkone -C "Key for Lab 2"
 ```
 
-## Part 2: Environment Variable
+- The `-t` flag lets us specify the type of key we want to create. We chose `ed25519`
+- The `-f` flag lets us specify the output location and name of the keyfiles. We followed the lab instructions and chose `wkone`.
+- The `-C` flag lets us add a comment to the key. And... Why not? :)
+
+## Environment Variables
 
 Create a configuration file named config.env
 
@@ -25,9 +29,9 @@ export IP_ADDR="35.89.130.148"
 export SSH_KEY_PATH="~/.ssh/wkone"
 ```
 
-## Part 3: Automation Script
+## Script Files
 
-**Script 1: Create an file named nginx-install**
+**Script 1: nginx-install**
 
 ```bash
 # nginx-install
@@ -48,7 +52,7 @@ sudo systemctl enable nginx
 EOF
 ```
 
-**Script 2: Create a file named document-write**
+**Script 2: document-write**
 
 ```bash
 # document-write
@@ -94,3 +98,4 @@ chmod +x document-write
 ### Result of the Scripts
 
 ![alt text](<Screenshot 4 Result.png>)
+
