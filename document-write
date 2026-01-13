@@ -1,7 +1,14 @@
 # document-write
-
 #!/bin/bash
 
+# store the current date in dd/mm/yyyy format
+curdate=$(date +"%d/%m/%Y")
+
+# connect to server with creds and IP from env
+# then, use nested heredocs with different EOF indicators
+# the outer heredoc passes everything through SSH to the server
+# the next line cats the inner heredoc (with the HTML), and pipes the result to an elevated tee to write to /var/www/html/index.html
+# the inner heredoc ends, and then we restart the nginx service
 ssh -i "${SSH_KEY_PATH}" -T "${NAME}"@"${IP_ADDR}" << EOF
 cat << END | sudo tee /var/www/html/index.html
 <!DOCTYPE html>
@@ -13,7 +20,7 @@ cat << END | sudo tee /var/www/html/index.html
 </head>
 <body>
   <h1>Hello World!</h1>
-  <p>Today's date is: </p>
+  <p>Today's date is: ${curdate}</p>
 </body>
 </html>
 END
