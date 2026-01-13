@@ -48,7 +48,7 @@ sudo systemctl enable nginx
 EOF
 ```
 
-**Script 2: Document-Write**
+**Script 2: Create a file named document-write**
 
 ```bash
 # document-write
@@ -80,6 +80,17 @@ END
 sudo systemctl restart nginx
 EOF
 ```
+
+### To Run Scripts
+
+```bash
+source config.env
+chmod +x nginx-install
+chmod +x document-write
+./nginx-install
+./document-write
+```
+
 ### Result of the Scripts
 
 ![alt text](<Screenshot 4 Result.png>)
