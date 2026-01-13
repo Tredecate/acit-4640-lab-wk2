@@ -3,7 +3,7 @@
 #!/bin/bash
 
 ssh -i "${SSH_KEY_PATH}" -T "${NAME}"@"${IP_ADDR}" << EOF
-cat << END > ~/file.txt
+cat << END | sudo tee /var/www/html/index.html
 <!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -17,5 +17,5 @@ cat << END > ~/file.txt
 </body>
 </html>
 END
-#sudo systemctl restart nginx
+sudo systemctl restart nginx
 EOF
