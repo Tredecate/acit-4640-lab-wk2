@@ -1,3 +1,7 @@
+# document-write
+
+#!/bin/bash
+
 ssh -i "${SSH_KEY_PATH}" -T "${NAME}"@"${IP_ADDR}" << EOF
 cat << END > ~/file.txt
 <!DOCTYPE html>
@@ -13,4 +17,5 @@ cat << END > ~/file.txt
 </body>
 </html>
 END
-sudo systemctl restart nginx
+#sudo systemctl restart nginx
+EOF
